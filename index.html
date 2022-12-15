@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gerador de Links para Whatsapp!">
+    <meta name="keywords" content="whatsapp, gerador, gerador de links, gb whatsapp 2022, whatsapp web, gb, whatsapp baixar">
+    <meta name="format-detection" content="telephone=no">
+    <title> Gerador de Links para Whatsapp</title>
+    <link rel="shortcut icon" href="assets/images/icons/favicon/gerador-de-link-para-whatsapp.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <nav class="menu-navegacao">
+        <div class="cabecalho-navegacao">
+            <button onclick="fecharMenu()"><img src="assets/images/icons/gerador-de-link-para-whatsapp.png"></button>
+            <img class="whatsapp-logo"src="assets/images/gerador-de-link-para-whatsapp.png" alt="whatsapp logo">
+        
+        <ul>
+            <li><a target="_blank" href="https://web.whatsapp.com">WHATSAPP WEB</a></li>
+        </ul>
+    </div>
+    </nav>
+    <header>
+        <nav class="container-header">
+            <a href="./index.html">
+                <div class="logo">
+                    <img src="assets/images/gerador-de-link-para-whatsapp.png" alt="whatsapp logo">
+                    <h1>Gerador de link para Whatsapp</h1>
+                </div>
+            </a>
+            <div class="navegacao">
+                <ul>
+                    <li><a target="_blank" href="https://web.whatsapp.com">WHATSAPP WEB</a></li>
+                </ul>
+                <button onclick="abrirMenu()"><img src="assets/images/icons/gerador-de-link-para-whatsapp(3).png"></button>
+            </div>
+        </nav>
+    </header>
+    <main class="index">
+        <div>
+            <div class="site">
+                <div class="principal">
+                    <div class="input-link">
+                        <label for="link"><p>LINK GERADO</p>
+                        </label>
+                        <input type="text" id="link" name="link">
+                    </div>
+                    <div class="formulario">
+                        <div class="input-numero">
+                            <label for="numero" ><p>NÚMERO DE TELEFONE</p></label>
+                            <input type="text" id="numero" name="numero" placeholder="(XX) X XXXX-XXXX" maxlength="11">
+                        </div>
+                        <div class="input-mensagem">
+                            <label for="mensagem" id="container-mensagem"><p>ESCREVA SUA MENSAGEM</p></label>
+                            <input type="text" id="mensagem" name="mensagem" placeholder="Escreva o texto">
+                        </div>
+                    </div>
+                    <div class="botoes">
+                            <button class="botao" id="botao-gerar" onclick="gerarLink()">GERAR LINK</button>
+                            <button class="botao" onclick="copyText()" id="botao-copiar-link">COPIAR LINK</button>
+                            <button class="botao" onclick="gerarOutroLink()" id="botao-gerar-outro">GERAR OUTRO LINK</button>
+                    </div>
+                    <p class="link-copiado">Link copiado!</p>
+                    <p class="aviso">Não guardamos nenhum dado informado.</p>
+                    <article class="explicacao">
+                        <h2>Como Funciona</h2>
+                        <ol>
+                            <li><p>Insira o nº do WhatsApp Ex: <span>11 9 9999-9999</span></p></li>
+                            <li><p>Escreva a mensagem padrão que será exibida</p></li>
+                            <li><p>Clique em “<span>GERAR LINK</span>"</p></li>
+                            <li><p>Copie o link e compartilhe</p></li>
+                        </ol>
+                        <h3>OBS: Antes de usar, faça o teste</h3>
+                    </article>
+                    </div>
+                    <div class="celular">
+                        <div class="cell-container">
+                            <img id="cell" src="assets/images/gerador-de-link-para-whatsapp(2).png">
+                        </div>
+                        <img id="detail1" src="assets/images/gerador-de-link-para-whatsapp(3).png" alt="">
+                        <div class="back">
+                            <div class="wpp-header"><img src="assets/images/gerador-de-link-para-whatsapp(1).jpg"><p id="wpp-header-number">(XX) X XXXX-XXXX</p></div>
+                            <img id="wallpaper" src="assets/images/gerador-de-link-para-whatsapp(4).png">
+                        </div>
+                        <div>
+                            <div class="balao-fala">
+                                <div id="balao-fala-wpp"><p>Sua mensagem aparecerá aqui!</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="descricao">
+                    <p>O gerador de links para o WhatsApp é uma ótima ferramenta para ações de marketing ou relacionamento. Com o link para mensagens personalizadas do WhatsApp, você poderá utilizar em campanhas, redes sociais, email marketing, banners e etc. O bom de encurtar e personalizar links e mensagens do WhatsApp é que funcionará no desktop e no mobile da mesma forma. Faça bom uso da ferramenta encurtadora de WhatsApp.
+                    </p>
+                </div>
+            </div>
+    </main>
+    <footer class="rodape">
+        <h5>Copyright 2022 - Gerador de Link para WhatsApp &copy; Todos os direitos reservados.
+        Rodrigues Websites</h5>
+        <ul>
+            <li><a href="https://www.umrodrigues.com.br/">umrodrigues.com.br</a></li>
+        </ul>
+    </footer>
+    <div class="erro">
+        <p>Insira o número de telefone!</p>
+    </div>
+    <script src="assets/js/jquery-3.6.1.min.js"></script>
+    <script src="assets/js/index.js"></script>
+    <script src="assets/js/jquery.mask.js"></script>
+    <script type="text/javascript">
+        $('#numero').mask('(99) 9 9999-9999')
+        $('#mensagem').keyup(function () {
+            let mensagem = $(this).val();
+            $('#balao-fala-wpp p').text(mensagem);
+            if($(this).val() == ""){
+            $('#balao-fala-wpp p').text("Sua mensagem aparecerá aqui!")
+            $('#balao-fala-wpp p').css("color", "#707070");
+        }else{
+            $('#balao-fala-wpp p').css("color", "#000");
+        }
+        })
+        $('#numero').keyup(function () {
+            let numero = $(this).val();
+            $('#wpp-header-number').text(numero);
+            if($(this).val() == ""){
+            $('#wpp-header-number').text("(XX) X XXXX-XXXX");
+        }
+        })
+
+
+    </script>
+</body>
+</html>
