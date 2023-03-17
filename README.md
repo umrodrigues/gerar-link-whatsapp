@@ -1,0 +1,1 @@
+# gerar-link-whatsapp
