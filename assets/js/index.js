@@ -1,9 +1,12 @@
 //Gerar Link
-const numero = document.querySelector("#numero");
+// const numero = document.querySelector("#numero");
 const mensagem = document.querySelector("#mensagem")
 
+let telefone = document.querySelector('#numero').value;
+telefone = telefone.replace(/\D/g, '');
+
 function gerarLink() {
-    const numeroInput = numero.value;
+    const numeroInput = telefone.value;
     const numeroFormatado = numeroInput.replace("(", "").replace(")", "").replaceAll(" ", "").replace("-","");
 
     let espaço = "&text=";
