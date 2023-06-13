@@ -50,7 +50,7 @@
                     <div class="formulario">
                         <div class="input-numero">
                             <label for="numero" ><p>NÚMERO DE TELEFONE</p></label>
-                            <input type="text" id="numero" name="numero" placeholder="(XX) X XXXX-XXXX" maxlength="16">
+                            <input type="text" id="numero" name="numero" placeholder="(XX) X XXXX-XXXX" maxlength="16" oninput="atualizarNumero()">
                         </div>
                         <div class="input-mensagem">
                             <label for="mensagem" id="container-mensagem"><p>ESCREVA SUA MENSAGEM</p></label>
@@ -61,7 +61,7 @@
                             <button class="botao" id="botao-gerar" onclick="gerarLink()">GERAR LINK</button>
                             <button class="botao" onclick="copyText()" id="botao-copiar-link">COPIAR LINK</button>
                             <button class="botao" onclick="gerarOutroLink()" id="botao-gerar-outro">GERAR OUTRO LINK</button>
-                            <button class="botao" onclick="direcionarParaWhatsApp()" id="botao-direcionar">Direcionar para a conversa</button>
+                            <button class="botao" onclick="direcionarParaWhatsApp()" id="botao-direcionar">IR PARA CONVERSA</button>
                     </div>
                     <p class="link-copiado">Link copiado!</p>
                     <p class="aviso">Nenhum dado informado é armazenado.</p>
@@ -81,7 +81,7 @@
                         </div>
                         <img id="detail1" src="assets/images/gerador-de-link-para-whatsapp(3).png" alt="">
                         <div class="back">
-                            <div class="wpp-header"><img src="assets/images/gerador-de-link-para-whatsapp(1).jpg"><p id="wpp-header-number">(XX) X XXXX-XXXX</p></div>
+                            <div class="wpp-header"><img src="assets/images/gerador-de-link-para-whatsapp(1).jpg"><p id="auto-wpp-header-number">(XX) X XXXX-XXXX</p></div>
                             <img id="wallpaper" src="assets/images/gerador-de-link-para-whatsapp(4).png">
                         </div>
                         <div>
@@ -122,13 +122,21 @@
             $('#balao-fala-wpp p').css("color", "#000");
         }
         })
-        $('#numero').keyup(function () {
-            let numero = $(this).val();
-            $('#wpp-header-number').text(numero);
-            if($(this).val() == ""){
-            $('#wpp-header-number').text("(XX) X XXXX-XXXX");
+
+        function atualizarNumero() {
+        var numero = document.getElementById("numero").value;
+        var wppHeader = document.getElementById("auto-wpp-header-number");
+        if (numero.length === 0) {
+            wppHeader.textContent = "(XX) X XXXX-XXXX";
+        } else {
+            wppHeader.textContent = numero;
         }
-        })
+    }
+
+    document.getElementById("numero").addEventListener("input", atualizarNumero);
+
+    // Chamar a função uma vez para inicializar o valor
+    atualizarNumero();
 
 
     </script>

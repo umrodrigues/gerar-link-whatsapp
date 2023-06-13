@@ -76,7 +76,7 @@ function gerarOutroLink(){
     $('#botao-gerar-outro').css("display", "none");
     $('#botao-direcionar').css("display", "none");
     $('.aviso').css("display", "block");
-    $('#wpp-header-number').text("(XX) X XXXX-XXXX");
+    $('#wpp-header-number').text("(XX) X AAAA");
     $('#balao-fala-wpp p').text("Sua mensagem aparecerá aqui!")
     $('#balao-fala-wpp p').css("color", "#707070");
     $('.link-copiado').css("display", "none");
