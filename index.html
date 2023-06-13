@@ -50,7 +50,7 @@
                     <div class="formulario">
                         <div class="input-numero">
                             <label for="numero" ><p>NÚMERO DE TELEFONE</p></label>
-                            <input type="text" id="numero" name="numero" placeholder="(XX) X XXXX-XXXX" maxlength="16" oninput="atualizarNumero()">
+                            <input type="text" id="numero" name="numero" placeholder="(XX) X XXXX-XXXX" maxlength="16" oninput="formatarNumero()">
                         </div>
                         <div class="input-mensagem">
                             <label for="mensagem" id="container-mensagem"><p>ESCREVA SUA MENSAGEM</p></label>
@@ -108,10 +108,12 @@
         <p>Insira o número de telefone!</p>
     </div>
     <script src="assets/js/jquery-3.6.1.min.js"></script>
-    <script src="assets/js/index.js"></script>
     <script src="assets/js/jquery.mask.js"></script>
+    <script src="assets/js/index.js"></script>
     <script type="text/javascript">
-        $('#numero').mask('(99) 9 9999-9999')
+        $(document).ready(function() {
+            $('#numero').mask('(99) 9 9999-9999');
+        });
         $('#mensagem').keyup(function () {
             let mensagem = $(this).val();
             $('#balao-fala-wpp p').text(mensagem);
@@ -137,6 +139,35 @@
 
     // Chamar a função uma vez para inicializar o valor
     atualizarNumero();
+
+
+    function formatarNumero() {
+    var numeroInput = document.getElementById("numero");
+    var numero = numeroInput.value.replace(/\D/g, ""); 
+    var formattedNumero = "";
+
+    // Verificar se o valor contém apenas dígitos numéricos
+    if (/^\d+$/.test(numero)) {
+        // Formatar número com parênteses e hífen
+        if (numero.length >= 2) {
+            formattedNumero += "(" + numero.substring(0, 2) + ")";
+        }
+        if (numero.length > 2 && numero.length <= 7) {
+            formattedNumero += " " + numero.substring(2);
+        }
+        if (numero.length > 7 && numero.length <= 11) {
+            formattedNumero += " " + numero.substring(2, 7) + "-" + numero.substring(7);
+        }
+    } else {
+        // Limpar o valor do campo se contiver caracteres inválidos
+        numeroInput.value = "";
+    }
+
+    // Aplicar a máscara utilizando a biblioteca jQuery Mask
+    $(numeroInput).mask("(99) 9 9999-9999");
+
+    numeroInput.value = formattedNumero;
+}
 
 
     </script>

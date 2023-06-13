@@ -80,6 +80,10 @@ function gerarOutroLink(){
     $('#balao-fala-wpp p').text("Sua mensagem aparecerá aqui!")
     $('#balao-fala-wpp p').css("color", "#707070");
     $('.link-copiado').css("display", "none");
+
+    var numero = "(XX) X XXXX-XXXX"; // Definir o número fixo desejado
+    document.getElementById("numero").value = numero;
+    atualizarNumero();
 }
 
 function unloadScrollBars() {
