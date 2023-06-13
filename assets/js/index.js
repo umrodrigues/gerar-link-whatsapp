@@ -28,9 +28,21 @@ function gerarLink() {
     $('#botao-gerar').css("display", "none");
     $('#botao-copiar-link').css("display", "inline-block");
     $('#botao-gerar-outro').css("display", "inline-block");
+    $('#botao-direcionar').css("display", "inline-block");
     $('.aviso').css("display", "none");
     } 
 }
+
+
+function direcionarParaWhatsApp() {
+    const link = document.getElementById("link").value;
+    window.open(link, "_blank");
+}
+
+const botaoDirecionar = document.getElementById("botao-direcionar");
+botaoDirecionar.addEventListener("click", direcionarParaWhatsApp);
+
+
 
 function mostrarErro(){
     let erro = document.querySelector('.erro');
@@ -62,6 +74,7 @@ function gerarOutroLink(){
     $('#botao-gerar').css("display", "block");
     $('#botao-copiar-link').css("display", "none");
     $('#botao-gerar-outro').css("display", "none");
+    $('#botao-direcionar').css("display", "none");
     $('.aviso').css("display", "block");
     $('#wpp-header-number').text("(XX) X XXXX-XXXX");
     $('#balao-fala-wpp p').text("Sua mensagem aparecerá aqui!")
@@ -89,3 +102,9 @@ function fecharMenu(){
     reloadScrollBars()
 }
 
+
+
+window.addEventListener("DOMContentLoaded", function() {
+    const botaoDirecionar = document.getElementById("botao-direcionar");
+    botaoDirecionar.style.display = "none";
+});
