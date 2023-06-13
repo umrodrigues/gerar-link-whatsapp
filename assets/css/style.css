@@ -33,7 +33,7 @@ body{
 .container-header a{
     text-decoration: none;
 }
-
+/* aa */
 .container-header img{
     margin-left: 25px;
     width: 48px;
@@ -297,7 +297,7 @@ main {
 }
 
 .input-link { 
-    display: none;
+    display: none !important;
 }
 
 .input-mensagem input, .input-numero input, .input-link input{
@@ -601,3 +601,9 @@ display: none;
     
 }
 
+
+.index {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 2em);
+}
