@@ -1,37 +1,51 @@
-//Gerar Link
-
 const numero = document.querySelector("#numero");
-const mensagem = document.querySelector("#mensagem")
+const mensagem = document.querySelector("#mensagem");
 
 function gerarLink() {
     const numeroInput = numero.value;
-    const numeroFormatado = numeroInput.replace("(", "").replace(")", "").replaceAll(" ", "").replace("-","").replaceAll("+55", "");
+    const numeroFormatado = numeroInput.replace(/\D/g, ""); 
 
     let espaço = "&text=";
 
     const mensagemInput = mensagem.value;
-    const mensagemFormatada = mensagemInput.replaceAll(" ", "%20")
+    const mensagemFormatada = mensagemInput.replaceAll(" ", "%20");
 
-    if(mensagem.value == "") {
+    if (mensagem.value == "") {
         espaço = "";
     }
 
-    if(numeroFormatado.length != 11){
-        mostrarErro();
-        
+    if (numeroFormatado.length !== 11) {
+        mostrarErro("Insira um número de telefone válido.");
     } else {
-    const link ="https://api.whatsapp.com/send?phone=55" + numeroFormatado + espaço + mensagemFormatada;
+        const link = "https://api.whatsapp.com/send?phone=55" + numeroFormatado + espaço + mensagemFormatada;
 
-    $('.formulario').css("display", "none");
-    $('.input-link').css("display", "flex");
-    $("#link").val(link);
-    $('#botao-gerar').css("display", "none");
-    $('#botao-copiar-link').css("display", "inline-block");
-    $('#botao-gerar-outro').css("display", "inline-block");
-    $('#botao-direcionar').css("display", "inline-block");
-    $('.aviso').css("display", "none");
-    } 
+        $('.formulario').css("display", "none");
+        $('.input-link').css("display", "flex");
+        $("#link").val(link);
+        $('#botao-gerar').css("display", "none");
+        $('#botao-copiar-link').css("display", "inline-block");
+        $('#botao-gerar-outro').css("display", "inline-block");
+        $('#botao-direcionar').css("display", "inline-block");
+        $('.aviso').css("display", "none");
+    }
 }
+
+function mostrarErro(mensagem) {
+    let erro = document.querySelector('.erro');
+    erro.querySelector('p').textContent = mensagem;
+    erro.style.opacity = "1";
+    erro.style.display = "flex";
+
+    setTimeout(() => {
+        erro.style.opacity = "0";
+        setTimeout(() => {
+            erro.style.display = "none"
+        }, 500)
+    }, 1500)
+}
+
+
+
 
 
 function direcionarParaWhatsApp() {
@@ -44,18 +58,6 @@ botaoDirecionar.addEventListener("click", direcionarParaWhatsApp);
 
 
 
-function mostrarErro(){
-    let erro = document.querySelector('.erro');
-    erro.style.opacity = "1";
-    erro.style.display = "flex";
-
-    setTimeout(() => {
-        erro.style.opacity = "0";
-        setTimeout(() => {
-            erro.style.display = "none"
-        }, 500)
-    }, 1500 )
-}
 
 function copyText() {
     var copyText = document.getElementById("link");
@@ -65,25 +67,24 @@ function copyText() {
     $('.link-copiado').css("display", "block");
   }
 
-function gerarOutroLink(){
+  function gerarOutroLink(){
     $('.formulario').css("display", "block");
     $('.input-link').css("display", "none");
     $('#link').val("");
-    $('#numero').val("");
+    $('#numero').val(""); 
     $('#mensagem').val("");
     $('#botao-gerar').css("display", "block");
     $('#botao-copiar-link').css("display", "none");
     $('#botao-gerar-outro').css("display", "none");
     $('#botao-direcionar').css("display", "none");
     $('.aviso').css("display", "block");
-    $('#wpp-header-number').text("(XX) X AAAA");
+    $('#auto-wpp-header-number').text("(XX) X XXXX-XXXX"); 
     $('#balao-fala-wpp p').text("Sua mensagem aparecerá aqui!")
     $('#balao-fala-wpp p').css("color", "#707070");
     $('.link-copiado').css("display", "none");
 
-    var numero = "(XX) X XXXX-XXXX"; // Definir o número fixo desejado
-    document.getElementById("numero").value = numero;
-    atualizarNumero();
+    $('#numero').mask('(99) 9 9999-9999');
+    $('.erro').css("display", "none");
 }
 
 function unloadScrollBars() {

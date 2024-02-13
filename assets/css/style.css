@@ -327,6 +327,7 @@ main {
     width: 24px;
     background-image: url(../images/icons/gerador-de-link-para-whatsapp\(2\).png);
     position: absolute;
+    top: 9px;
 }
 
 .input-numero label::before{
@@ -336,6 +337,7 @@ main {
     width: 24px;
     background-image: url(../images/icons/gerador-de-link-para-whatsapp\(4\).png);
     position: absolute;
+    top: 9px;
 }
 
 .input-link label::before{
@@ -350,7 +352,7 @@ main {
 .botoes {
     display: flex;
     justify-content: center;
-
+    align-items: center;
 }
 
 .botao{
@@ -374,7 +376,7 @@ main {
 
 #botao-gerar-outro, #botao-copiar-link{
     font-size: 16pt;
-    width: 11em;
+    width: 13em;
     display: none;
 }
 
