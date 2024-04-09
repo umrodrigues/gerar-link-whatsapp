@@ -2,22 +2,24 @@ const numero = document.querySelector("#numero");
 const mensagem = document.querySelector("#mensagem");
 
 function gerarLink() {
-    const numeroInput = numero.value;
+    const paisSelecionado = document.getElementById("pais").value;
+    const codigoPais = obterCodigoPais(paisSelecionado);
+    const numeroInput = document.getElementById("numero").value;
     const numeroFormatado = numeroInput.replace(/\D/g, ""); 
 
     let espaço = "&text=";
 
-    const mensagemInput = mensagem.value;
+    const mensagemInput = document.getElementById("mensagem").value;
     const mensagemFormatada = mensagemInput.replaceAll(" ", "%20");
 
-    if (mensagem.value == "") {
+    if (mensagemInput == "") {
         espaço = "";
     }
 
     if (numeroFormatado.length !== 11) {
         mostrarErro("Insira um número de telefone válido.");
     } else {
-        const link = "https://api.whatsapp.com/send?phone=55" + numeroFormatado + espaço + mensagemFormatada;
+        const link = "https://api.whatsapp.com/send?phone=" + codigoPais + numeroFormatado + espaço + mensagemFormatada;
 
         $('.formulario').css("display", "none");
         $('.input-link').css("display", "flex");
@@ -29,6 +31,21 @@ function gerarLink() {
         $('.aviso').css("display", "none");
     }
 }
+
+function obterCodigoPais(paisSelecionado) {
+    switch (paisSelecionado) {
+        case "BR":
+            return "55";
+        case "US":
+            return "1";
+        case "UK":
+            return "44";
+        default:
+            return "";
+    }
+}
+
+
 
 function mostrarErro(mensagem) {
     let erro = document.querySelector('.erro');

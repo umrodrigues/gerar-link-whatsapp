@@ -46,10 +46,16 @@
                         <label for="link"><p>LINK GERADO</p>
                         </label>
                         <input type="text" id="link" name="link">
-                    </div>
-                    <div class="formulario">
+                    </div><div class="formulario">
+                        <div class="input-pais">
+                            <select id="pais" name="pais">
+                                <option value="BR" selected>Brasil (+55)</option>
+                                <option value="US">Estados Unidos (+1)</option>
+                                <option value="UK">Reino Unido (+44)</option>
+                            </select>
+                        </div>
                         <div class="input-numero">
-                            <label for="numero" ><p>NÚMERO DE TELEFONE</p></label>
+                            <label for="numero"><p>NÚMERO DE TELEFONE</p></label>
                             <input type="text" id="numero" name="numero" placeholder="(XX) X XXXX-XXXX" maxlength="16" oninput="formatarNumero()">
                         </div>
                         <div class="input-mensagem">
@@ -57,6 +63,7 @@
                             <input type="text" id="mensagem" name="mensagem" placeholder="Escreva o texto">
                         </div>
                     </div>
+                    
                     <div class="botoes">
                             <button class="botao" id="botao-gerar" onclick="gerarLink()">GERAR LINK</button>
                             <button class="botao" onclick="copyText()" id="botao-copiar-link">COPIAR LINK</button>
@@ -136,8 +143,6 @@
     }
 
     document.getElementById("numero").addEventListener("input", atualizarNumero);
-
-    // Chamar a função uma vez para inicializar o valor
     atualizarNumero();
 
 
@@ -145,10 +150,7 @@
     var numeroInput = document.getElementById("numero");
     var numero = numeroInput.value.replace(/\D/g, ""); 
     var formattedNumero = "";
-
-    // Verificar se o valor contém apenas dígitos numéricos
     if (/^\d+$/.test(numero)) {
-        // Formatar número com parênteses e hífen
         if (numero.length >= 2) {
             formattedNumero += "(" + numero.substring(0, 2) + ")";
         }
@@ -159,11 +161,8 @@
             formattedNumero += " " + numero.substring(2, 7) + "-" + numero.substring(7);
         }
     } else {
-        // Limpar o valor do campo se contiver caracteres inválidos
         numeroInput.value = "";
     }
-
-    // Aplicar a máscara utilizando a biblioteca jQuery Mask
     $(numeroInput).mask("(99) 9 9999-9999");
 
     numeroInput.value = formattedNumero;
