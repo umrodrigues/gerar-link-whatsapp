@@ -41,10 +41,9 @@ function obtainCountryCode(selectedCountry) {
         case "UK":
             return "44";
         default:
-            return "";
+            return "55";
     }
 }
-
 
 
 function showError(message) {

@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700;800;900&display=swap');
 
-@keyframes subilinhado{
-
-}
 
 * {
     padding: 0;
@@ -33,7 +30,7 @@ body{
 .container-header a{
     text-decoration: none;
 }
-/* aa */
+
 .container-header img{
     margin-left: 25px;
     width: 48px;
@@ -262,13 +259,13 @@ main {
     overflow-y: scroll;
     overflow-wrap: break-word;
     text-overflow: ellipsis;
-  }
+}
 
-  #balao-fala-wpp::-webkit-scrollbar { 
+#balao-fala-wpp::-webkit-scrollbar { 
     display: none;
 }
 
-  .balao-fala:after {
+.balao-fala:after {
     position: absolute;
     display: block;
     content: "";  
@@ -280,7 +277,7 @@ main {
     position:absolute;
     bottom: 45px;
     left: 168px;
-  }
+}
 
 
 .input-mensagem, .input-numero, .input-link{ 
@@ -529,11 +526,11 @@ display: none;
     
     #balao-fala-wpp{
         width: 150px;
-      }
+}
     
     .balao-fala:after {
         left: 160px;
-      }
+}
 
     .wpp-header p{
         bottom: 12px;
@@ -603,9 +600,24 @@ display: none;
     
 }
 
-
 .index {
     display: flex;
     flex-direction: column;
     min-height: calc(100vh - 2em);
+}
+
+.input-pais{
+    
+}
+
+.select{
+    background-color: white;
+    display: flex;
+    margin: 15px;
+    padding: 5px;
+    border: solid 1px rgb(173, 173, 173);
+    border-radius: 5px;
+    flex-direction: column;
+    position: relative;
+    cursor: pointer;
 }
