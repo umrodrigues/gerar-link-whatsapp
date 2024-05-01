@@ -1,25 +1,25 @@
-const numero = document.querySelector("#numero");
-const mensagem = document.querySelector("#mensagem");
+const number = document.querySelector("#numero");
+const message = document.querySelector("#mensagem");
 
-function gerarLink() {
-    const paisSelecionado = document.getElementById("pais").value;
-    const codigoPais = obterCodigoPais(paisSelecionado);
-    const numeroInput = document.getElementById("numero").value;
-    const numeroFormatado = numeroInput.replace(/\D/g, ""); 
+function generateLink() {
+    const selectedCountry = document.getElementById("pais").value;
+    const countryCode = obtainCountryCode(selectedCountry);
+    const inputNumber = document.getElementById("numero").value;
+    const formattedNumber = inputNumber.replace(/\D/g, ""); 
 
-    let espaço = "&text=";
+    let space = "&text=";
 
-    const mensagemInput = document.getElementById("mensagem").value;
-    const mensagemFormatada = mensagemInput.replaceAll(" ", "%20");
+    const messageInput = document.getElementById("mensagem").value;
+    const formattedMessage = messageInput.replaceAll(" ", "%20");
 
-    if (mensagemInput == "") {
-        espaço = "";
+    if (messageInput == "") {
+        space = "";
     }
 
-    if (numeroFormatado.length !== 11) {
-        mostrarErro("Insira um número de telefone válido.");
+    if (formattedNumber.length !== 11) {
+        showError("Insira um número de telefone válido.");
     } else {
-        const link = "https://api.whatsapp.com/send?phone=" + codigoPais + numeroFormatado + espaço + mensagemFormatada;
+        const link = "https://api.whatsapp.com/send?phone=" + countryCode + formattedNumber + space + formattedMessage;
 
         $('.formulario').css("display", "none");
         $('.input-link').css("display", "flex");
@@ -32,8 +32,8 @@ function gerarLink() {
     }
 }
 
-function obterCodigoPais(paisSelecionado) {
-    switch (paisSelecionado) {
+function obtainCountryCode(selectedCountry) {
+    switch (selectedCountry) {
         case "BR":
             return "55";
         case "US":
@@ -47,9 +47,9 @@ function obterCodigoPais(paisSelecionado) {
 
 
 
-function mostrarErro(mensagem) {
+function showError(message) {
     let erro = document.querySelector('.erro');
-    erro.querySelector('p').textContent = mensagem;
+    erro.querySelector('p').textContent = message;
     erro.style.opacity = "1";
     erro.style.display = "flex";
 
@@ -65,13 +65,13 @@ function mostrarErro(mensagem) {
 
 
 
-function direcionarParaWhatsApp() {
+function redirectFromWhatsapp() {
     const link = document.getElementById("link").value;
     window.open(link, "_blank");
 }
 
-const botaoDirecionar = document.getElementById("botao-direcionar");
-botaoDirecionar.addEventListener("click", direcionarParaWhatsApp);
+const redirectButton = document.getElementById("botao-direcionar");
+redirectButton.addEventListener("click", redirectFromWhatsapp);
 
 
 
@@ -84,7 +84,7 @@ function copyText() {
     $('.link-copiado').css("display", "block");
   }
 
-  function gerarOutroLink(){
+  function generateOtherLink(){
     $('.formulario').css("display", "block");
     $('.input-link').css("display", "none");
     $('#link').val("");
@@ -114,12 +114,12 @@ function reloadScrollBars() {
     document.body.scroll = "yes";
 }
 
-function abrirMenu(){
+function menuOpen(){
     $(".menu-navegacao").css("display", "flex")
     unloadScrollBars()
 }
 
-function fecharMenu(){
+function menuClose(){
     $(".menu-navegacao").css("display", "none")
     reloadScrollBars()
 }
@@ -127,6 +127,6 @@ function fecharMenu(){
 
 
 window.addEventListener("DOMContentLoaded", function() {
-    const botaoDirecionar = document.getElementById("botao-direcionar");
-    botaoDirecionar.style.display = "none";
+    const redirectButton = document.getElementById("botao-direcionar");
+    redirectButton.style.display = "none";
 });
